@@ -8,7 +8,7 @@ function Add({ setQues }) {
   const handleClick = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8080/question", {
+      .post("https://qna-backend-fx77.onrender.com/question", {
         question: ques,
         answer: ans,
       })

@@ -10,7 +10,9 @@ export default function Home() {
   useEffect(() => {
     const fetchAllQues = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/question");
+        const res = await axios.get(
+          "https://qna-backend-fx77.onrender.com/question"
+        );
         setQues(res.data);
         console.log(res);
       } catch (error) {

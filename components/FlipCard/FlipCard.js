@@ -13,7 +13,7 @@ const App = ({ question, answer, id }) => {
 
   const handleDelete = async () => {
     await axios
-      .delete("http://localhost:8080/question/" + id)
+      .delete("https://qna-backend-fx77.onrender.com/question/" + id)
       .then((res) => {
         window.location.reload();
         console.log(res);
