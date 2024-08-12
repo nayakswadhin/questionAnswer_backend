@@ -23,6 +23,8 @@ const App = ({ question, answer, id }) => {
       });
   };
 
+  const handleUpdate = () => {};
+
   return (
     <div className="App p-3">
       <div className="container">
@@ -33,13 +35,13 @@ const App = ({ question, answer, id }) => {
               <button className="flip-button" onClick={handleFlip}>
                 See Answer
               </button>
-              {/* <Link></Link>
+
               <button
                 className="w-[150px] p-[10px] text-[16px] mt-[10px] bg-green-600 cursor-pointer border-none"
                 onClick={() => handleUpdate()}
               >
-                Update
-              </button> */}
+                <Link href={`/update/${id}`}>Update</Link>
+              </button>
               <button
                 className="w-[150px] p-[10px] text-[16px] mt-[10px] bg-red-600 cursor-pointer border-none"
                 onClick={() => handleDelete()}
