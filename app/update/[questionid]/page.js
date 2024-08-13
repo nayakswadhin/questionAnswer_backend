@@ -41,7 +41,7 @@ function Update({ params }) {
       <div className="m-4 font-bold text-3xl text-center">UPDATE QUESTION</div>
       <form
         action=""
-        className="flex flex-col items-center font-headertxt text-xl pt-4 w-full"
+        className="text-center flex flex-col items-center font-headertxt text-xl pt-4 w-full"
       >
         <div>
           Question:{" "}

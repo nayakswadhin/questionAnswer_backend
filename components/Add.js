@@ -24,7 +24,10 @@ function Add({ setQues }) {
   console.log(ques);
   return (
     <div>
-      <form action="" className="flex justify-center font-headertxt text-xl">
+      <form
+        action=""
+        className="text-center md:flex items-center justify-center font-headertxt text-xl"
+      >
         <div>
           Question:{" "}
           <input
@@ -54,7 +57,7 @@ function Add({ setQues }) {
             type="submit"
             value="Add Ques"
             onClick={handleClick}
-            className="border-solid border-2 border-black bg-green-500 cursor-pointer px-3 py-1 rounded-2xl hover:bg-sky-500"
+            className="border-solid border-2 border-black bg-green-500 cursor-pointer px-3 py-1 my-2 md:my-0 rounded-2xl hover:bg-sky-500"
           />
         </div>
       </form>
