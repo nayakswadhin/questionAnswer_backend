@@ -4,11 +4,27 @@ import React, { useState } from "react";
 import "./flip.css";
 import axios from "axios";
 import Link from "next/link";
-const App = ({ question, answer, id }) => {
+import { Checkbox } from "@mui/material";
+
+const App = ({ question, answer, id, setCount, setIdDelete }) => {
   const [isFlipped, setFlipped] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   const handleFlip = () => {
     setFlipped(!isFlipped);
+  };
+
+  const handleCheck = (e, id) => {
+    if (e.target.checked) {
+      setIsChecked(true);
+      setCount((prevCount) => prevCount + 1);
+      setIdDelete((prevIds) => [...prevIds, id]);
+    } else {
+      setIsChecked(false);
+      setCount((prevCount) => prevCount - 1);
+      setIdDelete((prevIds) => prevIds.filter((itemId) => itemId != id));
+    }
   };
 
   const handleDelete = async () => {
@@ -30,7 +46,18 @@ const App = ({ question, answer, id }) => {
       <div className="container">
         <div className={`flip-card ${isFlipped ? "flipped" : ""}`}>
           <div className="flip-card-inner">
-            <div className="flip-card-front">
+            <div
+              className={`flip-card-front ${
+                isChecked
+                  ? `opacity-80 bg-[#5b7bb3]`
+                  : `opacity-100 bg-[#8aaae5]`
+              } text-black h-full`}
+            >
+              <Checkbox
+                {...label}
+                className="float-right"
+                onChange={(e) => handleCheck(e, id)}
+              />
               <div className="card-content">{question}</div>
               <button className="flip-button" onClick={handleFlip}>
                 See Answer

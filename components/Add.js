@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-function Add({ setQues }) {
+function Add({ setQues, count, id }) {
   const [ques, setQue] = useState("");
   const [ans, setAns] = useState("");
 
@@ -21,9 +22,24 @@ function Add({ setQues }) {
       });
   };
 
+  const handleDeleteAll = async () => {
+    console.log(id);
+    await axios
+      .delete("https://qna-backend-fx77.onrender.com/questions/", {
+        data: id,
+      })
+      .then((res) => {
+        window.location.reload();
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   console.log(ques);
   return (
-    <div>
+    <div className="text-center md:flex items-center justify-center font-headertxt text-xl">
       <form
         action=""
         className="text-center md:flex items-center justify-center font-headertxt text-xl"
@@ -61,6 +77,13 @@ function Add({ setQues }) {
           />
         </div>
       </form>
+      <button
+        onClick={handleDeleteAll}
+        className="border-2 border-solid border-black rounded-2xl px-3 py-1 bg-red-500 hover:bg-red-800"
+      >
+        Delete
+        <DeleteIcon />({count})
+      </button>
     </div>
   );
 }
